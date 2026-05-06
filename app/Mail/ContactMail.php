@@ -4,23 +4,33 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
 
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public function __construct(
+        public array $data
+    ) {}
 
-    public function __construct($data)
+    public function envelope(): Envelope
     {
-        $this->data = $data;
+        return new Envelope(
+            subject: 'Nouveau message de ' . $this->data['user_name'] . ' - ' . ($this->data['subject'] ?? 'Sans sujet'),
+            replyTo: [
+                new Address($this->data['user_email'], $this->data['user_name']),
+            ],
+        );
     }
 
-    public function build()
+    public function content(): Content
     {
-        return $this->subject('Nouveau message - ' . ($this->data['subject'] ?? 'Sans sujet'))
-            ->view('emails.contact')
-            ->replyTo($this->data['user_email'], $this->data['user_name']);
+        return new Content(
+            view: 'emails.contact',
+        );
     }
 }

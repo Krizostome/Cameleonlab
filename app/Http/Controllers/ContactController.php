@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactMail;
 
 class ContactController extends Controller
 {
@@ -17,9 +17,13 @@ class ContactController extends Controller
             'message' => 'required|string|min:10',
         ]);
 
-        Mail::to('contact@cameleonlab.com')->send(
-            new ContactMail($validated)
-        );
+        try {
+            Mail::to('validationtest19@gmail.com')->send(
+                new ContactMail($validated)
+            );
+        } catch (\Exception $e) {
+            \Log::error('Mail error: ' . $e->getMessage());
+        }
 
         return back()->with('success', 'Votre message a été envoyé avec succès !');
     }

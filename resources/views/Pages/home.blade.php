@@ -171,23 +171,54 @@
             <p>Les outils et frameworks que nous utilisons au quotidien</p>
         </div>
 
-        <div class="tech-grid">
-            <div class="tech-item fade-in"><i class="devicon-html5-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-css3-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-javascript-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-typescript-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-react-original colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-vuejs-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-nextjs-original"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-laravel-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-nodejs-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-php-plain"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-python-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-mysql-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-mongodb-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-docker-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-git-plain colored"></i></div>
-            <div class="tech-item fade-in"><i class="devicon-figma-plain colored"></i></div>
+        <div class="tech-columns">
+            <div class="tech-category">
+                <h3><i class="fa-solid fa-code"></i> Langages</h3>
+                <div class="tech-grid">
+                    <div class="tech-item fade-in"><i class="devicon-html5-plain colored" title="HTML5"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-css3-plain colored" title="CSS3"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-javascript-plain colored" title="JavaScript"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-typescript-plain colored" title="TypeScript"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-php-plain" title="PHP"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-python-plain colored" title="Python"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-java-plain" title="Java"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-cplusplus-plain colored" title="C++"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-swift-plain colored" title="Swift"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-kotlin-plain colored" title="Kotlin"></i></div>
+                </div>
+            </div>
+
+            <div class="tech-category">
+                <h3><i class="fa-solid fa-layer-group"></i> Frameworks</h3>
+                <div class="tech-grid">
+                    <div class="tech-item fade-in"><i class="devicon-laravel-plain colored" title="Laravel"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-react-original colored" title="React"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-vuejs-plain colored" title="Vue.js"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-angularjs-plain colored" title="Angular"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-wordpress-plain colored" title="WordPress"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-tailwindcss-original colored" title="Tailwind CSS"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-nodejs-plain colored" title="Node.js"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-django-plain colored" title="Django"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-flask-original colored" title="Flask"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-spring-plain colored" title="Spring Boot"></i></div>
+                </div>
+            </div>
+
+            <div class="tech-category">
+                <h3><i class="fa-solid fa-database"></i> Bases de Données & Outils</h3>
+                <div class="tech-grid">
+                    <div class="tech-item fade-in"><i class="devicon-mysql-plain colored" title="MySQL"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-postgresql-plain colored" title="PostgreSQL"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-mongodb-plain colored" title="MongoDB"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-redis-plain colored" title="Redis"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-sqlite-plain colored" title="SQLite"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-firebase-plain colored" title="Firebase"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-docker-plain colored" title="Docker"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-git-plain colored" title="Git"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-github-original" title="GitHub"></i></div>
+                    <div class="tech-item fade-in"><i class="devicon-vscode-plain colored" title="VS Code"></i></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
