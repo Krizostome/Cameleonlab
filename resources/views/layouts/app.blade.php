@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
+    
+    @vite(['resources/css/app.css', 'resources/js/app.tsx'])
+    
     @stack('styles')
 </head>
 <body>
@@ -27,6 +29,7 @@
 @include('partials.footer')
 
 <script src="{{ asset('assets/js/main.js') }}"></script>
+
 @stack('scripts')
 
 </body>

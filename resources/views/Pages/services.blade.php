@@ -99,38 +99,14 @@
     </div>
 </section>
 
-<section style="background: var(--green-pale);">
+<section>
     <div class="container">
         <div class="section-title">
             <h2>Notre <span>Processus</span></h2>
             <p>Une méthodologie éprouvée pour garantir le succès de chaque projet</p>
         </div>
 
-        <div class="services-detail-grid">
-            <div class="service-detail-card fade-in">
-                <div class="service-num">1</div>
-                <h3>Analyse & Conception</h3>
-                <p>Nous analysons vos besoins, définissons les objectifs et concevons l'architecture optimale pour votre projet.</p>
-            </div>
-
-            <div class="service-detail-card fade-in">
-                <div class="service-num">2</div>
-                <h3>Design & Prototypage</h3>
-                <p>Nous créons des maquettes et prototypes interactifs pour valider l'expérience utilisateur avant le développement.</p>
-            </div>
-
-            <div class="service-detail-card fade-in">
-                <div class="service-num">3</div>
-                <h3>Développement</h3>
-                <p>Notre équipe développe votre solution avec les meilleures pratiques et technologies du marché.</p>
-            </div>
-
-            <div class="service-detail-card fade-in">
-                <div class="service-num">4</div>
-                <h3>Tests & Lancement</h3>
-                <p>Tests rigoureux, optimisation des performances et mise en production avec un suivi post-lancement.</p>
-            </div>
-        </div>
+        <div id="react-timeline-root" class="w-full min-h-screen"></div>
     </div>
 </section>
 

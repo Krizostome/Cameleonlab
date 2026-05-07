@@ -12,7 +12,13 @@
         <li><a href="{{ route('contact') }}" class="nav-cta">Contact</a></li>
     </ul>
 
-    <button class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-    </button>
+    <div style="display:flex;align-items:center;gap:15px;">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
 </nav>

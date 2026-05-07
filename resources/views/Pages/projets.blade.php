@@ -19,11 +19,11 @@
 <section>
     <div class="container">
         <div class="projects-filter">
-            <button class="filter-btn active" data-filter="all">Tous</button>
-            <button class="filter-btn" data-filter="web">Web</button>
-            <button class="filter-btn" data-filter="mobile">Mobile</button>
-            <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-            <button class="filter-btn" data-filter="uiux">UI/UX</button>
+            <button class="filter-btn active" data-filter="all"><span>Tous</span></button>
+            <button class="filter-btn" data-filter="web"><span>Web</span></button>
+            <button class="filter-btn" data-filter="mobile"><span>Mobile</span></button>
+            <button class="filter-btn" data-filter="ecommerce"><span>E-Commerce</span></button>
+            <button class="filter-btn" data-filter="uiux"><span>UI/UX</span></button>
         </div>
 
         <div class="projects-grid" id="projectsGrid">
@@ -125,6 +125,8 @@
         </div>
     </div>
 </section>
+
+<div id="react-projects-root"></div>
 
 <section class="cta-section">
     <div class="container">

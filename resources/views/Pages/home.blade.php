@@ -4,87 +4,7 @@
 
 @section('content')
 
-<section id="hero">
-    <div class="hero-bg-shapes">
-        <div class="hero-shape hero-shape-1"></div>
-        <div class="hero-shape hero-shape-2"></div>
-        <div class="hero-shape hero-shape-3"></div>
-    </div>
-    <div class="hero-grid-overlay"></div>
-
-    <div class="hero-container">
-        <div class="hero-text">
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
-                Agence Web Créative
-            </div>
-
-            <h1>Nous construisons le <span class="accent">web de demain</span></h1>
-
-            <p class="hero-description">
-                Conception et développement de solutions web innovantes, performantes et sur mesure pour propulser votre entreprise dans l'ère digitale.
-            </p>
-
-            <div class="hero-text-animated" id="heroAnimatedText">
-                <p class="hero-text-item active">
-                    <span class="check-icon"><i class="fas fa-check-circle"></i></span>
-                    Sites vitrines élégants et performants
-                </p>
-                <p class="hero-text-item">
-                    <span class="check-icon"><i class="fas fa-check-circle"></i></span>
-                    Applications web sur mesure et scalables
-                </p>
-                <p class="hero-text-item">
-                    <span class="check-icon"><i class="fas fa-check-circle"></i></span>
-                    Expériences digitales mémorables
-                </p>
-            </div>
-
-            <div class="hero-buttons">
-                <a href="{{ route('contact') }}" class="btn-primary">Démarrer un projet</a>
-                <a href="{{ route('projets') }}" class="btn-secondary">Voir nos projets</a>
-            </div>
-
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <h3>50+</h3>
-                    <p>Projets livrés</p>
-                </div>
-                <div class="hero-stat">
-                    <h3>30+</h3>
-                    <p>Clients satisfaits</p>
-                </div>
-                <div class="hero-stat">
-                    <h3>5+</h3>
-                    <p>Années d'XP</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="hero-image-wrapper">
-                <div class="hero-decoration"></div>
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Développement Web" class="hero-main-image">
-
-                <div class="hero-floating-card hero-floating-card-1">
-                    <div class="floating-icon"><i class="fas fa-code"></i></div>
-                    <div class="floating-text">
-                        <h4>Code propre</h4>
-                        <p>Standards modernes</p>
-                    </div>
-                </div>
-
-                <div class="hero-floating-card hero-floating-card-2">
-                    <div class="floating-icon"><i class="fas fa-bolt"></i></div>
-                    <div class="floating-text">
-                        <h4>Performance</h4>
-                        <p>Score 95+</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<div id="react-hero-root"></div>
 
 <section id="about">
     <div class="container">
@@ -124,41 +44,97 @@
             <p>Des solutions complètes pour répondre à tous vos besoins digitaux</p>
         </div>
 
-        <div class="expertise-grid">
-            <div class="expertise-card fade-in">
-                <div class="expertise-icon"><i class="fas fa-laptop-code"></i></div>
-                <h3>Développement Web</h3>
-                <p>Création de sites web modernes, responsive et optimisés pour le référencement. Nous utilisons les dernières technologies pour des performances maximales.</p>
+        <div class="expertise-stairs">
+            <div class="expertise-line"></div>
+
+            <div class="stair-item stair-left fade-in-left">
+                <div class="stair-dot"></div>
+                <div class="stair-card">
+                    <div class="stair-number">01</div>
+                    <div class="stair-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Développement Web</h3>
+                    <p>Sites modernes, responsives & optimisés SEO. Performances maximales avec les dernières technologies.</p>
+                    <ul class="stair-features">
+                        <li>Sites vitrine & institutionnels</li>
+                        <li>Applications web sur-mesure</li>
+                        <li>Optimisation SEO & performances</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="expertise-card fade-in">
-                <div class="expertise-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Applications Mobiles</h3>
-                <p>Conception d'applications mobiles natives et cross-platform pour iOS et Android avec une expérience utilisateur fluide.</p>
+            <div class="stair-item stair-right fade-in-right">
+                <div class="stair-dot"></div>
+                <div class="stair-card">
+                    <div class="stair-number">02</div>
+                    <div class="stair-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Applications Mobiles</h3>
+                    <p>Apps natives & cross-platform pour iOS et Android. Une expérience utilisateur fluide et engageante.</p>
+                    <ul class="stair-features">
+                        <li>iOS & Android natif</li>
+                        <li>Cross-platform (React Native, Flutter)</li>
+                        <li>API & synchronisation temps réel</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="expertise-card fade-in">
-                <div class="expertise-icon"><i class="fas fa-paint-brush"></i></div>
-                <h3>Design UI/UX</h3>
-                <p>Création d'interfaces intuitives et esthétiques qui captivent vos utilisateurs et renforcent votre identité de marque.</p>
+            <div class="stair-item stair-left fade-in-left">
+                <div class="stair-dot"></div>
+                <div class="stair-card">
+                    <div class="stair-number">03</div>
+                    <div class="stair-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Design UI/UX</h3>
+                    <p>Interfaces intuitives et esthétiques qui captivent vos utilisateurs et renforcent votre marque.</p>
+                    <ul class="stair-features">
+                        <li>Wireframes & prototypage interactif</li>
+                        <li>Design system & charte graphique</li>
+                        <li>Tests utilisateurs & itérations</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="expertise-card fade-in">
-                <div class="expertise-icon"><i class="fas fa-shopping-cart"></i></div>
-                <h3>E-Commerce</h3>
-                <p>Développement de boutiques en ligne performantes avec gestion des paiements, stocks et livraison intégrée.</p>
+            <div class="stair-item stair-right fade-in-right">
+                <div class="stair-dot"></div>
+                <div class="stair-card">
+                    <div class="stair-number">04</div>
+                    <div class="stair-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h3>E-Commerce</h3>
+                    <p>Boutiques en ligne performantes avec paiement sécurisé, gestion des stocks et livraison intégrée.</p>
+                    <ul class="stair-features">
+                        <li>Shopify, WooCommerce, Magento</li>
+                        <li>Paiement sécurisé multi-moyens</li>
+                        <li>Gestion stocks & logistique</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="expertise-card fade-in">
-                <div class="expertise-icon"><i class="fas fa-cogs"></i></div>
-                <h3>Back-end & API</h3>
-                <p>Architecture robuste et scalable, APIs RESTful et GraphQL pour connecter vos systèmes et automatiser vos processus.</p>
+            <div class="stair-item stair-left fade-in-left">
+                <div class="stair-dot"></div>
+                <div class="stair-card">
+                    <div class="stair-number">05</div>
+                    <div class="stair-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Back-end & API</h3>
+                    <p>Architecture robuste et scalable. APIs RESTful et GraphQL pour connecter et automatiser vos systèmes.</p>
+                    <ul class="stair-features">
+                        <li>APIs RESTful & GraphQL</li>
+                        <li>Architecture micro-services</li>
+                        <li>Base de données & cloud</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="expertise-card fade-in">
-                <div class="expertise-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>SEO & Marketing</h3>
-                <p>Optimisation pour les moteurs de recherche et stratégies digitales pour augmenter votre visibilité en ligne.</p>
+            <div class="stair-item stair-right fade-in-right">
+                <div class="stair-dot"></div>
+                <div class="stair-card">
+                    <div class="stair-number">06</div>
+                    <div class="stair-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>SEO & Marketing</h3>
+                    <p> Stratégies digitales pour augmenter votre visibilité et attirer plus de clients qualifiés.</p>
+                    <ul class="stair-features">
+                        <li>SEO technique & contenu</li>
+                        <li>Stratégie social media</li>
+                        <li>Analytics & reporting</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -171,54 +147,9 @@
             <p>Les outils et frameworks que nous utilisons au quotidien</p>
         </div>
 
-        <div class="tech-columns">
-            <div class="tech-category">
-                <h3><i class="fa-solid fa-code"></i> Langages</h3>
-                <div class="tech-grid">
-                    <div class="tech-item fade-in"><i class="devicon-html5-plain colored" title="HTML5"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-css3-plain colored" title="CSS3"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-javascript-plain colored" title="JavaScript"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-typescript-plain colored" title="TypeScript"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-php-plain" title="PHP"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-python-plain colored" title="Python"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-java-plain" title="Java"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-cplusplus-plain colored" title="C++"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-swift-plain colored" title="Swift"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-kotlin-plain colored" title="Kotlin"></i></div>
-                </div>
-            </div>
-
-            <div class="tech-category">
-                <h3><i class="fa-solid fa-layer-group"></i> Frameworks</h3>
-                <div class="tech-grid">
-                    <div class="tech-item fade-in"><i class="devicon-laravel-plain colored" title="Laravel"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-react-original colored" title="React"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-vuejs-plain colored" title="Vue.js"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-angularjs-plain colored" title="Angular"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-wordpress-plain colored" title="WordPress"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-tailwindcss-original colored" title="Tailwind CSS"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-nodejs-plain colored" title="Node.js"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-django-plain colored" title="Django"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-flask-original colored" title="Flask"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-spring-plain colored" title="Spring Boot"></i></div>
-                </div>
-            </div>
-
-            <div class="tech-category">
-                <h3><i class="fa-solid fa-database"></i> Bases de Données & Outils</h3>
-                <div class="tech-grid">
-                    <div class="tech-item fade-in"><i class="devicon-mysql-plain colored" title="MySQL"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-postgresql-plain colored" title="PostgreSQL"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-mongodb-plain colored" title="MongoDB"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-redis-plain colored" title="Redis"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-sqlite-plain colored" title="SQLite"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-firebase-plain colored" title="Firebase"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-docker-plain colored" title="Docker"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-git-plain colored" title="Git"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-github-original" title="GitHub"></i></div>
-                    <div class="tech-item fade-in"><i class="devicon-vscode-plain colored" title="VS Code"></i></div>
-                </div>
-            </div>
+        <div class="tech-marquee-modern">
+            <div class="marquee-row" id="row1"></div>
+            <div class="marquee-row" id="row2"></div>
         </div>
     </div>
 </section>
