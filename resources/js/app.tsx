@@ -1,19 +1,27 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+import CinematicHeroDemo from './components/ui/cinematic-hero-demo';
+import RadialOrbitalTimelineDemo from './components/ui/radial-orbital-timeline-demo';
 
 const heroContainer = document.getElementById('react-hero-root');
 
-async function mountHero(container: HTMLElement) {
+
+function mountHero(container: HTMLElement) {
   try {
-    const { default: CinematicHeroDemo } = await import('./components/ui/cinematic-hero-demo');
     const root = createRoot(container);
     root.render(
       <React.StrictMode>
         <CinematicHeroDemo />
       </React.StrictMode>
     );
+    console.log('[CameleonLab] Hero React mounted successfully');
   } catch (e) {
-    console.warn('[CameleonLab] Hero failed to load, showing fallback:', e);
+    console.warn('[CameleonLab] Hero failed to load:', e);
   }
 }
 
@@ -23,15 +31,15 @@ if (heroContainer) {
 
 const timelineContainer = document.getElementById('react-timeline-root');
 
-async function mountTimeline(container: HTMLElement) {
+function mountTimeline(container: HTMLElement) {
   try {
-    const { default: RadialOrbitalTimelineDemo } = await import('./components/ui/radial-orbital-timeline-demo');
     const root = createRoot(container);
     root.render(
       <React.StrictMode>
         <RadialOrbitalTimelineDemo />
       </React.StrictMode>
     );
+    console.log('[CameleonLab] Timeline React mounted successfully');
   } catch (e) {
     console.warn('[CameleonLab] Timeline failed to load:', e);
   }

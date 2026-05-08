@@ -1,5 +1,3 @@
-"use client";
-
 import { Search, PenTool, Code, TestTube, Rocket } from "lucide-react";
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 
