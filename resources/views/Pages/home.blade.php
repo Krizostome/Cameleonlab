@@ -4,7 +4,13 @@
 
 @section('content')
 
-<div id="react-hero-root"></div>
+<div id="react-hero-root">
+    <div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0D1117;color:#E6EDF3;font-family:sans-serif;text-align:center;gap:8px;">
+        <h1 style="font-size:2.5rem;font-weight:700;">Nous construisons</h1>
+        <h1 style="font-size:2.5rem;font-weight:800;color:#2ECC71;">le web de demain.</h1>
+        <p style="margin-top:16px;color:#8B949E;font-size:1rem;">Chargement...</p>
+    </div>
+</div>
 
 <section id="about">
     <div class="container">

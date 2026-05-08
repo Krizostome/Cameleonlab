@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     
+    <script>window.__vite_plugin_react_preamble_installed__ = true</script>
     @vite(['resources/css/app.css', 'resources/js/app.tsx'])
     
     @stack('styles')

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
@@ -10,8 +10,6 @@ if (typeof window !== "undefined") {
 }
 
 const INJECTED_STYLES = `
-  .gsap-reveal { visibility: hidden; }
-
   .film-grain {
       position: absolute; inset: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 50; opacity: 0.05; mix-blend-mode: overlay;
@@ -224,66 +222,75 @@ export function CinematicHero({
     };
   },[]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const isMobile = window.innerWidth < 768;
 
-    const ctx = gsap.context(() => {
-      gsap.set(".text-track", { autoAlpha: 0, y: 60, scale: 0.85, filter: "blur(20px)", rotationX: -20 });
-      gsap.set(".text-days", { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
-      gsap.set(".main-card", { y: window.innerHeight + 200, autoAlpha: 1 });
-      gsap.set([".card-left-text", ".card-right-text", ".mockup-scroll-wrapper", ".floating-badge", ".phone-widget"], { autoAlpha: 0 });
-      gsap.set(".cta-wrapper", { autoAlpha: 0, scale: 0.8, filter: "blur(30px)" });
+    try {
+      const ctx = gsap.context(() => {
+        gsap.set(".text-track", { opacity: 0, y: 30 });
+        gsap.set(".text-days", { opacity: 0 });
+        gsap.set(".main-card", { y: window.innerHeight + 200 });
 
-      const introTl = gsap.timeline({ delay: 0.3 });
-      introTl
-        .to(".text-track", { duration: 1.8, autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", rotationX: 0, ease: "expo.out" })
-        .to(".text-days", { duration: 1.4, clipPath: "inset(0 0% 0 0)", ease: "power4.inOut" }, "-=1.0");
+        const introTl = gsap.timeline({ delay: 0 });
+        introTl
+          .to(".text-track", { duration: 0.8, opacity: 1, y: 0, ease: "expo.out" })
+          .to(".text-days", { duration: 0.6, opacity: 1, ease: "expo.out" }, "-=0.4");
 
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=7000",
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
-      });
+        const scrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "+=7000",
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+          },
+        });
 
-      scrollTl
-        .to([".hero-text-wrapper", ".bg-grid-theme"], { scale: 1.15, filter: "blur(20px)", opacity: 0.2, ease: "power2.inOut", duration: 2 }, 0)
-        .to(".main-card", { y: 0, ease: "power3.inOut", duration: 2 }, 0)
-        .to(".main-card", { width: "100%", height: "100%", borderRadius: "0px", ease: "power3.inOut", duration: 1.5 })
-        .fromTo(".mockup-scroll-wrapper",
-          { y: 300, z: -500, rotationX: 50, rotationY: -30, autoAlpha: 0, scale: 0.6 },
-          { y: 0, z: 0, rotationX: 0, rotationY: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 2.5 }, "-=0.8"
-        )
-        .fromTo(".phone-widget", { y: 40, autoAlpha: 0, scale: 0.95 }, { y: 0, autoAlpha: 1, scale: 1, stagger: 0.15, ease: "back.out(1.2)", duration: 1.5 }, "-=1.5")
-        .to(".progress-ring", { strokeDashoffset: 60, duration: 2, ease: "power3.inOut" }, "-=1.2")
-        .to(".counter-val", { innerHTML: metricValue, snap: { innerHTML: 1 }, duration: 2, ease: "expo.out" }, "-=2.0")
-        .fromTo(".floating-badge", { y: 100, autoAlpha: 0, scale: 0.7, rotationZ: -10 }, { y: 0, autoAlpha: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 }, "-=2.0")
-        .fromTo(".card-left-text", { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "-=1.5")
-        .fromTo(".card-right-text", { x: 50, autoAlpha: 0, scale: 0.8 }, { x: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 1.5 }, "<")
-        .to({}, { duration: 2.5 })
-        .set(".hero-text-wrapper", { autoAlpha: 0 })
-        .set(".cta-wrapper", { autoAlpha: 1 }) 
-        .to({}, { duration: 1.5 })
-        .to([".mockup-scroll-wrapper", ".floating-badge", ".card-left-text", ".card-right-text"], {
-          scale: 0.9, y: -40, z: -200, autoAlpha: 0, ease: "power3.in", duration: 1.2, stagger: 0.05,
-        })
-        .to(".main-card", { 
-          width: isMobile ? "92vw" : "85vw", 
-          height: isMobile ? "92vh" : "85vh", 
-          borderRadius: isMobile ? "32px" : "40px", 
-          ease: "expo.inOut", 
-          duration: 1.8 
-        }, "pullback") 
-        .to(".cta-wrapper", { scale: 1, filter: "blur(0px)", ease: "expo.inOut", duration: 1.8 }, "pullback")
-        .to(".main-card", { y: -window.innerHeight - 300, ease: "power3.in", duration: 1.5 });
+        scrollTl
+          .to([".hero-text-wrapper", ".bg-grid-theme"], { scale: 1.15, filter: "blur(20px)", opacity: 0.2, ease: "power2.inOut", duration: 2 }, 0)
+          .to(".main-card", { y: 0, ease: "power3.inOut", duration: 2 }, 0)
+          .to(".main-card", { width: "100%", height: "100%", borderRadius: "0px", ease: "power3.inOut", duration: 1.5 })
+          .fromTo(".mockup-scroll-wrapper",
+            { y: 300, z: -500, rotationX: 50, rotationY: -30, opacity: 0, scale: 0.6 },
+            { y: 0, z: 0, rotationX: 0, rotationY: 0, opacity: 1, scale: 1, ease: "expo.out", duration: 2.5 }, "-=0.8"
+          )
+          .fromTo(".phone-widget", { y: 40, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, stagger: 0.15, ease: "back.out(1.2)", duration: 1.5 }, "-=1.5")
+          .to(".progress-ring", { strokeDashoffset: 60, duration: 2, ease: "power3.inOut" }, "-=1.2")
+          .to(".counter-val", { innerHTML: metricValue, snap: { innerHTML: 1 }, duration: 2, ease: "expo.out" }, "-=2.0")
+          .fromTo(".floating-badge", { y: 100, opacity: 0, scale: 0.7, rotationZ: -10 }, { y: 0, opacity: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 }, "-=2.0")
+          .fromTo(".card-left-text", { x: -50, opacity: 0 }, { x: 0, opacity: 1, ease: "power4.out", duration: 1.5 }, "-=1.5")
+          .fromTo(".card-right-text", { x: 50, opacity: 0, scale: 0.8 }, { x: 0, opacity: 1, scale: 1, ease: "expo.out", duration: 1.5 }, "<")
+          .to({}, { duration: 2.5 })
+          .set(".hero-text-wrapper", { opacity: 0 })
+          .set(".cta-wrapper", { opacity: 1 }) 
+          .to({}, { duration: 1.5 })
+          .to([".mockup-scroll-wrapper", ".floating-badge", ".card-left-text", ".card-right-text"], {
+            scale: 0.9, y: -40, z: -200, opacity: 0, ease: "power3.in", duration: 1.2, stagger: 0.05,
+          })
+          .to(".main-card", { 
+            width: isMobile ? "92vw" : "85vw", 
+            height: isMobile ? "92vh" : "85vh", 
+            borderRadius: isMobile ? "32px" : "40px", 
+            ease: "expo.inOut", 
+            duration: 1.8 
+          }, "pullback") 
+          .to(".cta-wrapper", { scale: 1, filter: "blur(0px)", ease: "expo.inOut", duration: 1.8 }, "pullback")
+          .to(".main-card", { y: -window.innerHeight - 300, ease: "power3.in", duration: 1.5 });
 
-    }, containerRef);
+      }, containerRef);
 
-    return () => ctx.revert();
+      const fallbackTimer = setTimeout(() => {
+        gsap.set([".text-track", ".text-days", ".cta-wrapper"], { clearProps: "opacity" });
+      }, 3000);
+
+      return () => {
+        ctx.revert();
+        clearTimeout(fallbackTimer);
+      };
+    } catch (e) {
+      console.warn("GSAP error:", e);
+    }
   },[metricValue]); 
 
   return (
@@ -298,15 +305,15 @@ export function CinematicHero({
       <div className="bg-grid-theme absolute inset-0 z-0 pointer-events-none opacity-50" aria-hidden="true" />
 
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 will-change-transform transform-style-3d">
-        <h1 className="text-track gsap-reveal text-3d-matte text-3xl md:text-5xl lg:text-[4rem] font-bold tracking-tight mb-2">
+        <h1 className="text-track text-3d-matte text-3xl md:text-5xl lg:text-[4rem] font-bold tracking-tight mb-2">
           {tagline1}
         </h1>
-        <h1 className="text-days gsap-reveal text-silver-matte text-3xl md:text-5xl lg:text-[4rem] font-extrabold tracking-tighter">
+        <h1 className="text-days text-silver-matte text-3xl md:text-5xl lg:text-[4rem] font-extrabold tracking-tighter">
           {tagline2}
         </h1>
       </div>
 
-      <div className="cta-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 gsap-reveal pointer-events-auto will-change-transform">
+      <div className="cta-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 pointer-events-auto will-change-transform">
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight text-silver-matte">
           {ctaHeading}
         </h2>
@@ -339,13 +346,13 @@ export function CinematicHero({
       <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none" style={{ perspective: "1500px" }}>
         <div
           ref={mainCardRef}
-          className="main-card premium-depth-card relative overflow-hidden gsap-reveal flex items-center justify-center pointer-events-auto w-[92vw] md:w-[85vw] h-[92vh] md:h-[85vh] rounded-[32px] md:rounded-[40px]"
+          className="main-card premium-depth-card relative overflow-hidden flex items-center justify-center pointer-events-auto w-[92vw] md:w-[85vw] h-[92vh] md:h-[85vh] rounded-[32px] md:rounded-[40px]"
         >
           <div className="card-sheen" aria-hidden="true" />
 
           <div className="relative w-full h-full max-w-7xl mx-auto px-4 lg:px-12 flex flex-col justify-evenly lg:grid lg:grid-cols-3 items-center lg:gap-8 z-10 py-6 lg:py-0">
             
-            <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
+            <div className="card-right-text order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
               <h2 className="text-5xl md:text-[5rem] lg:text-[6rem] font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0">
                 {brandName}
               </h2>
@@ -444,7 +451,7 @@ export function CinematicHero({
               </div>
             </div>
 
-            <div className="card-left-text gsap-reveal order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full lg:max-w-none px-4 lg:px-0">
+            <div className="card-left-text order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full lg:max-w-none px-4 lg:px-0">
               <h3 className="text-white text-xl md:text-2xl lg:text-3xl font-bold mb-0 lg:mb-4 tracking-tight">
                 {cardHeading}
               </h3>
